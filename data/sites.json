@@ -1,0 +1,13 @@
+{
+    "success": true,
+    "sites": [
+        {
+            "name": "BBC",
+            "url": "https://www.bbc.co.uk/news/live/world-europe-60532634/"
+        },
+        {
+            "name": "uaMaps",
+            "url": "https://ukraine.liveuamap.com/"
+        }
+    ]
+}
