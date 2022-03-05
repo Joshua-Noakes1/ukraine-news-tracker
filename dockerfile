@@ -1,16 +1,13 @@
 # https://stackoverflow.com/a/71073989
-FROM node:slim
+FROM node:current-buster-slim
 WORKDIR /app
 
 # Install dependencies for puppeteer
 RUN \
     apt-get update -yqq \
     && apt-get upgrade -yqq \
-    && apt-get install -y wget gnupg ca-certificates procps libxss1 \
-    && wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \
-    && sh -c 'echo "deb [arch=amd64,aarch64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list' \
-    && apt-get update \
-    && apt-get install -y google-chrome-stable \
+    && apt-get install -yqq gconf-service libasound2 libatk1.0-0 libcairo2 libcups2 libfontconfig1 libgdk-pixbuf2.0-0 libgtk-3-0 libnspr4 libpango-1.0-0 libxss1 fonts-liberation libappindicator1 libnss3 lsb-release xdg-utils \
+    && apt-get install -yqq chromium \
     && rm -rf /var/lib/apt/lists/* \
     && apt-get clean -yqq
 
@@ -18,8 +15,6 @@ RUN \
 COPY . .
 
 # Install dependencies
-RUN \
-    npm ci && \
-    chmod -R o+rwx node_modules/puppeteer/.local-chromium
+RUN npm install --ignore-scripts
 # Start app
 CMD ["npm", "start"]

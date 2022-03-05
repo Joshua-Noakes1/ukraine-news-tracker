@@ -34,7 +34,7 @@ async function main() {
     await browserInstance.close();
 }
 
-if (process.env.dev !== "true") {
+if (process.env.devTest !== "true") {
     // setup cron for every 30 minutes
     let job = new CronJob('0 */30 * * * *', async function () {
         console.log(lcl.blue("[Cron - Info]"), "Cron has passed, taking screenshots");

@@ -4,5 +4,7 @@ services:
     image: ukrainer-news-tracker
     container_name: ukraine-news-tracker
     restart: unless-stopped
+    environment:
+      docker: true
     volumes:
       - ./screenshots:/app/screenshots
