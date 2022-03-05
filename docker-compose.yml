@@ -1,0 +1,8 @@
+version: '3'
+services:
+  unt:
+    image: ukrainer-news-tracker
+    container_name: ukraine-news-tracker
+    restart: unless-stopped
+    volumes:
+      - ./screenshots:/app/screenshots

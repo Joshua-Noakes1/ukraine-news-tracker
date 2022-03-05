@@ -1,3 +1,4 @@
+require('dotenv').config();
 const lcl = require('cli-color'),
     path = require('path'),
     browserObject = require('./lib/browser/browser'),
@@ -29,14 +30,20 @@ async function main() {
     });
 
     // close browser
+    console.log(lcl.green("[Browser - Success]"), "Closing browser...");
     await browserInstance.close();
 }
 
-main();
+if (process.env.dev !== "true") {
+    // setup cron for every 30 minutes
+    let job = new CronJob('0 */30 * * * *', async function () {
+        console.log(lcl.blue("[Cron - Info]"), "Cron has passed, taking screenshots");
+        await main(); // start the main function
+    }, null, true, process.env.TZ);
 
-// setup cron for every 30 minutes
-// let job = new CronJob('0 */30 * * * *', async function () {
-//     console.log(lcl.blue("[Cron - Info]"), "Cron has passed, taking screenshots");
-//     await main(); // start the main function
-// }, null, true, process.env.TZ);
-// job.start();
+    console.log(lcl.blue("[Cron - Info]"), "Cron has started, waiting for every 30 minutes");
+    job.start();
+} else {
+    // start the main function
+    main();
+}

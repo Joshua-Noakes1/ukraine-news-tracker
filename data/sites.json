@@ -8,6 +8,10 @@
         {
             "name": "uaMaps",
             "url": "https://ukraine.liveuamap.com/"
+        },
+        {
+            "name": "CNN",
+            "url": "https://edition.cnn.com/europe/live-news/ukraine-russia-putin-news-03-05-22/index.html"
         }
     ]
 }
