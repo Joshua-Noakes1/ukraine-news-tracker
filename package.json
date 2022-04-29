@@ -20,7 +20,7 @@
   "homepage": "https://github.com/joshua-noakes1/ukraine-news-tracker#readme",
   "dependencies": {
     "cli-color": "^2.0.1",
-    "cron": "^1.8.2",
+    "cron": "^1.8.3",
     "dotenv": "^16.0.0",
     "path": "^0.12.7",
     "puppeteer-extra": "^3.2.3",
